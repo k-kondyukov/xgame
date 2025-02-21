@@ -1,0 +1,48 @@
+# Игнорирование скомпилированных бинарных файлов
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Файлы объектных кодов и временные файлы компиляции
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.lib
+
+# Файлы CMake и Make
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Логи и отладочные файлы
+*.log
+*.dbg
+*.dmp
+
+# Файлы IDE и среды разработки
+.vscode/
+.idea/
+*.suo
+*.user
+*.ncb
+*.sdf
+*.sqlite
+*.VC.db
+*.DS_Store
+
+# Автоматически сгенерированные SFML файлы
+SFML/build/
+SFML/lib/
+SFML/bin/
+
+# Кэш и временные файлы
+*.swp
+*.tmp
+*.bak
+*.~*
