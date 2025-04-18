@@ -1,8 +1,8 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-
 #ifndef SPMAP
 #define SPMAP
+
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 struct SpMap
 {

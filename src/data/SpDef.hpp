@@ -1,7 +1,7 @@
-#include <iostream>
-
 #ifndef SPDEF
 #define SPDEF
+
+#include <iostream>
 
 struct SpDef
 {

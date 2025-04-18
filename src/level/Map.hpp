@@ -1,5 +1,8 @@
-#ifndef MAP_MANAGER
-#define MAP_MANAGER
+#ifndef MAP
+#define MAP
+
+#include <iostream>
+#include <vector>
 
 class Map
 {

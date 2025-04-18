@@ -1,10 +1,9 @@
-#include <SFML/Graphics.hpp>
-#include "level/Level.hpp"
-#include "Observer.hpp"
-
 #ifndef GAMEVIEW_HPP
 #define GAMEVIEW_HPP
 
+#include <SFML/Graphics.hpp>
+#include "level/Level.hpp"
+#include "Observer.hpp"
 
 class GameView : public Observer {
 private:

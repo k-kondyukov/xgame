@@ -1,12 +1,12 @@
+#ifndef LEVEL_HPP
+#define LEVEL_HPP
+
 #include <iostream>
 #include <vector>
 #include "SFML/Graphics.hpp"
 #include "data/SpMap.hpp"
 #include "Map.hpp"
 #include "Observer.hpp"
-
-#ifndef LEVEL_HPP
-#define LEVEL_HPP
 
 class Level : public Observable
 {

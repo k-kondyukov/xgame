@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="src\GameView.cpp" />
     <ClCompile Include="src\level\Level.cpp" />
     <ClCompile Include="src\level\Map.cpp" />
