@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "level/Level.hpp"
 #include "Observer.hpp"
+#include "Resources/Resources.hpp"
 
 class GameView : public Observer {
 private:
@@ -13,6 +14,7 @@ private:
 
     void rebuildLevelTexture();
 
+    void drawMap();
 public:
     GameView(sf::RenderWindow& win, Level& lvl);
     ~GameView() override = default;

@@ -10,5 +10,5 @@ struct SpDef
 	int damage;
 };
 
-#endif
+#endif // !SPDEF
 

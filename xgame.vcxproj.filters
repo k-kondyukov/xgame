@@ -22,6 +22,9 @@
     <Filter Include="Файлы заголовков\data">
       <UniqueIdentifier>{dff01ad5-fcd3-4ad5-aa43-461119f92b55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Resources">
+      <UniqueIdentifier>{e0ec8b29-b315-4a4b-9b76-eb62722bc675}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="src\GameView.hpp">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resources\Resources.hpp">
+      <Filter>Файлы заголовков\Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

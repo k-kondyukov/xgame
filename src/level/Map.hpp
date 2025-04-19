@@ -10,13 +10,11 @@ public:
 	int lvlCounter;
 	std::vector<std::vector<int>> wall;
 	std::vector<std::vector<int>> floor;
-	std::vector<std::vector<int>> fiature; // это для мха, трещин и тд
+	std::vector<std::vector<int>> shader; // это для мха, трещин и тд
 
-	Map()
-	{
-	}
+	Map();
 
 	void Generate(std::string parametrs);
 };
 
-#endif // !MAP_MANAGER
+#endif // !MAP

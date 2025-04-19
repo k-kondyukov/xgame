@@ -15,13 +15,11 @@ public:
 	Map map;
 	sf::Vector2i endLevelPos;
 
-	Level()
-	{
-	}
+	Level();
 
 	void Save();
 	void Load();
 	void GetMap();
 };
 
-#endif
+#endif // !LEVEL_HPP

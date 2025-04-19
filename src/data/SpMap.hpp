@@ -11,4 +11,4 @@ struct SpMap
 	int id;
 };
 
-#endif 
+#endif // !SPMAP
