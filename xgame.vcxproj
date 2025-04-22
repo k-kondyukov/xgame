@@ -105,12 +105,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\xgame\include;..xgame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;.\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..xgame\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
