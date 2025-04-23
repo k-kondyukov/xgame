@@ -8,7 +8,7 @@
 
 class PlayerController {
 	void Init(std::vector<SpMap>);
-	std::vector<std::unique_ptr<View>> GetView();
+	std::unique_ptr<View> GetView();
 	Player GetPlayer();
 };
 
