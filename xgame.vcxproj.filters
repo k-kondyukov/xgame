@@ -104,5 +104,38 @@
     <ClInclude Include="src\data\DiscDef.hpp">
       <Filter>Файлы заголовков\data</Filter>
     </ClInclude>
+    <ClInclude Include="src\entites\items\Armor.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Artifact.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Chip.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Consumables.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Effects.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Equipment.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Gun.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Object.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Throw.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\Weapon.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\controllers\PlayerController.hpp">
+      <Filter>Файлы заголовков\entities\controllers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

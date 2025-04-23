@@ -6,7 +6,7 @@
 #include "../Drawable.hpp"
 #include "Animator.hpp"
 
-class GameObject : public View, Drawable {
+class GameObject : public View, public Drawable {
 protected:
 	int hp;
 	int max_hp;
