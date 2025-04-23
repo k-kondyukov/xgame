@@ -25,6 +25,18 @@
     <Filter Include="Файлы заголовков\Resources">
       <UniqueIdentifier>{e0ec8b29-b315-4a4b-9b76-eb62722bc675}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\entities">
+      <UniqueIdentifier>{f097670d-b2e4-4f97-aa5c-06fb7178b9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\entities\items">
+      <UniqueIdentifier>{92c20652-5114-4504-ac0c-ad6b339b07a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\entities\gameObjects">
+      <UniqueIdentifier>{aaef84e8-2389-460f-9dd0-4e3a9cc47ca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\entities\controllers">
+      <UniqueIdentifier>{4212b120-00e4-43ae-94f6-b42992f50224}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -61,6 +73,36 @@
     </ClInclude>
     <ClInclude Include="src\Resources\Resources.hpp">
       <Filter>Файлы заголовков\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\Drawable.hpp">
+      <Filter>Файлы заголовков\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\gameObjects\Entity.hpp">
+      <Filter>Файлы заголовков\entities\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\gameObjects\GameObject.hpp">
+      <Filter>Файлы заголовков\entities\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\gameObjects\Player.hpp">
+      <Filter>Файлы заголовков\entities\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\gameObjects\Sprite.hpp">
+      <Filter>Файлы заголовков\entities\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\gameObjects\View.hpp">
+      <Filter>Файлы заголовков\entities\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\gameObjects\Animator.hpp">
+      <Filter>Файлы заголовков\entities\gameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\controllers\AIControllers.hpp">
+      <Filter>Файлы заголовков\entities\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\CostDef.hpp">
+      <Filter>Файлы заголовков\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\DiscDef.hpp">
+      <Filter>Файлы заголовков\data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
