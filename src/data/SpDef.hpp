@@ -6,7 +6,7 @@
 struct SpDef
 {
 	int maxHp;
-	std::string id;
+	int id;
 	int damage;
 };
 

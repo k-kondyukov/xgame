@@ -145,6 +145,7 @@
     <ClInclude Include="src\data\SpDef.hpp" />
     <ClInclude Include="src\data\SpMap.hpp" />
     <ClInclude Include="src\entites\controllers\AIControllers.hpp" />
+    <ClInclude Include="src\entites\controllers\Controller.hpp" />
     <ClInclude Include="src\entites\controllers\PlayerController.hpp" />
     <ClInclude Include="src\entites\Drawable.hpp" />
     <ClInclude Include="src\entites\gameObjects\Animator.hpp" />
@@ -156,8 +157,8 @@
     <ClInclude Include="src\entites\items\Armor.hpp" />
     <ClInclude Include="src\entites\items\Artifact.hpp" />
     <ClInclude Include="src\entites\items\Chip.hpp" />
+    <ClInclude Include="src\entites\items\ChipSlots.hpp" />
     <ClInclude Include="src\entites\items\Consumables.hpp" />
-    <ClInclude Include="src\entites\items\Effects.hpp" />
     <ClInclude Include="src\entites\items\Equipment.hpp" />
     <ClInclude Include="src\entites\items\Gun.hpp" />
     <ClInclude Include="src\entites\items\Object.hpp" />

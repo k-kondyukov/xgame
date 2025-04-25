@@ -1,16 +1,13 @@
 #ifndef ARTIFACT
 #define ARTIFACT
 
-#include "Effects.hpp"
 #include "Weapon.hpp"
 #include "Equipment.hpp"
-#include "Chip.hpp"
+#include "ChipSlots.hpp"
 
-class Artifact: public Effects, public Weapon, public Equipment {
+class Artifact: public Weapon, public Equipment, public ChipSlots {
 	int manacost;
 	float Use() override;
-	Chip chips[3];
-	void TrySetChip(Chip chip);
 };
 
 #endif

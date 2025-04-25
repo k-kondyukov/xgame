@@ -3,12 +3,10 @@
 
 #include "Weapon.hpp"
 #include "Equipment.hpp"
-#include "Chip.hpp"
+#include "ChipSlots.hpp"
 
-class Gun :public Weapon, public Equipment {
-	Chip chips[3];
+class Gun :public Weapon, public Equipment, public ChipSlots {
 	float Use() override;
-	void TrySetChip(Chip chip);
 };
 
 #endif // !GUN

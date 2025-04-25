@@ -1,7 +1,6 @@
 #ifndef CONSUMABLES
 #define CONSUMABLES
 
-#include "Effects.hpp"
 #include "entites/gameObjects/Player.hpp"
 
 class Consumables {

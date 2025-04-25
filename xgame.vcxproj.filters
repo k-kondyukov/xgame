@@ -116,9 +116,6 @@
     <ClInclude Include="src\entites\items\Consumables.hpp">
       <Filter>Файлы заголовков\entities\items</Filter>
     </ClInclude>
-    <ClInclude Include="src\entites\items\Effects.hpp">
-      <Filter>Файлы заголовков\entities\items</Filter>
-    </ClInclude>
     <ClInclude Include="src\entites\items\Equipment.hpp">
       <Filter>Файлы заголовков\entities\items</Filter>
     </ClInclude>
@@ -135,6 +132,12 @@
       <Filter>Файлы заголовков\entities\items</Filter>
     </ClInclude>
     <ClInclude Include="src\entites\controllers\PlayerController.hpp">
+      <Filter>Файлы заголовков\entities\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\items\ChipSlots.hpp">
+      <Filter>Файлы заголовков\entities\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entites\controllers\Controller.hpp">
       <Filter>Файлы заголовков\entities\controllers</Filter>
     </ClInclude>
   </ItemGroup>

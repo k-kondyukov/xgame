@@ -2,14 +2,11 @@
 #define PLAYER_CONTROLLER
 
 #include <iostream>
-#include "entites/gameObjects/View.hpp"
-#include "data/SpMap.hpp"
-#include "entites/gameObjects/Player.hpp"
+#include "Controller.hpp"
 
-class PlayerController {
-	void Init(std::vector<SpMap>);
-	std::vector<std::unique_ptr<View>> GetView();
-	Player GetPlayer();
+class PlayerController : public Controller{
+	virtual bool CheckCollision(sf::Vector2f position) override;
+	virtual void Init(std::vector<SpMap>) override;
 };
 
 #endif // !PLAYER_CONTROLLER
