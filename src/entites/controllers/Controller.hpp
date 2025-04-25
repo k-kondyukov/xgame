@@ -8,7 +8,6 @@
 #include "entites/gameObjects/Player.hpp"
 
 class Controller {
-	std::vector<std::unique_ptr<View>> GetView();
 	std::vector <std::unique_ptr<GameObject>> GetGameObjects();
 	Player GetPlayer();
 	virtual bool CheckCollision(sf::Vector2f position) = 0;
