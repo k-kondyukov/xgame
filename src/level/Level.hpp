@@ -7,6 +7,7 @@
 #include "data/SpMap.hpp"
 #include "Map.hpp"
 #include "Observer.hpp"
+#include "entites/gameObjects/View.hpp"
 
 class Level : public Observable
 {
@@ -14,6 +15,7 @@ public:
 	int LevelCounter;
 	Map map;
 	sf::Vector2i endLevelPos;
+	std::vector<std::unique_ptr<View>> views;
 
 	Level();
 
