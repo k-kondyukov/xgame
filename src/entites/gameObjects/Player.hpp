@@ -19,8 +19,8 @@ class Player : public Sprite {
 	void Drop() override = 0;
 	void Death() override;
 	void Move(float delta) override;
-	void TakeDamage() override;
-	void DealDamage() override;
+	void TakeDamage(int damage) override;
+	void DealDamage(std::unique_ptr<GameObject> target) override;
 };
 
 #endif // !PLAYER

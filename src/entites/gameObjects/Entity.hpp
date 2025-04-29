@@ -6,8 +6,8 @@
 class Entity : public Sprite {
 	int damage;
 	virtual void Move(float delta) override;
-	virtual void TakeDamage(int damage);
-	virtual void DealDamage();
+	void TakeDamage(int damage) override;
+	void DealDamage(std::unique_ptr<GameObject> target) override;
 	void Drop() override;
 };
 
