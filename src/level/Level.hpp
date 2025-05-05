@@ -16,6 +16,7 @@ public:
 	Map map;
 	sf::Vector2i endLevelPos;
 	std::vector<std::unique_ptr<View>> views;
+	std::vector<SpMap> spMap;
 
 	Level();
 
