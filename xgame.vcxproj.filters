@@ -140,5 +140,20 @@
     <ClInclude Include="src\entites\controllers\Controller.hpp">
       <Filter>Файлы заголовков\entities\controllers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Redactor.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\ArmorDef.hpp">
+      <Filter>Файлы заголовков\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\ArtifactDef.hpp">
+      <Filter>Файлы заголовков\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\GunDef.hpp">
+      <Filter>Файлы заголовков\data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

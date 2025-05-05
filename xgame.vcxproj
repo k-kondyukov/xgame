@@ -140,8 +140,11 @@
     <ClCompile Include="src\level\Map.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\data\ArmorDef.hpp" />
+    <ClInclude Include="src\data\ArtifactDef.hpp" />
     <ClInclude Include="src\data\CostDef.hpp" />
     <ClInclude Include="src\data\DiscDef.hpp" />
+    <ClInclude Include="src\data\GunDef.hpp" />
     <ClInclude Include="src\data\SpDef.hpp" />
     <ClInclude Include="src\data\SpMap.hpp" />
     <ClInclude Include="src\entites\controllers\AIControllers.hpp" />
@@ -164,10 +167,12 @@
     <ClInclude Include="src\entites\items\Object.hpp" />
     <ClInclude Include="src\entites\items\Throw.hpp" />
     <ClInclude Include="src\entites\items\Weapon.hpp" />
+    <ClInclude Include="src\Game.hpp" />
     <ClInclude Include="src\GameView.hpp" />
     <ClInclude Include="src\level\Level.hpp" />
     <ClInclude Include="src\level\Map.hpp" />
     <ClInclude Include="src\Observer.hpp" />
+    <ClInclude Include="src\Redactor.hpp" />
     <ClInclude Include="src\Resources\Resources.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
