@@ -13,6 +13,18 @@ protected:
 	sf::Vector2f position;
 	Animator animator;
 
+	int damage;
+	int armor;
+
+	int strength;
+	int dexterity;
+	int intelegnce;
+
+	int maxArmor;
+	int maxStrength;
+	int maxDexterity;
+	int maxIntelegnce;
+
 public:
 	virtual void Drop();
 	virtual void Death();

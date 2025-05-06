@@ -7,10 +7,23 @@
 #include "entites/items/Artifact.hpp"
 
 class Player : public Sprite {
-	int damage;
-	int armor;
-	int maxMana;
 	int mana;
+	int athletics;
+	int endurance;
+	int agility;
+	int secrecy;
+	int psionics;
+	int analysis;
+	int energy;
+
+	int maxMana;
+	int maxAthletics;
+	int maxEndurance;
+	int maxAgility;
+	int maxSecrecy;
+	int maxPsionics;
+	int maxAnalysis;
+	int maxEnergy;
 
 	Gun guns[2];
 	Artifact artifacts[2];

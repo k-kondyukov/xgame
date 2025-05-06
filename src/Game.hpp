@@ -11,6 +11,8 @@ class Game
 	Level level;
 	AIController AIController;
 	PlayerController PlayerController;
+
+	void RunGame();
 };
 
 #endif // !GAME
