@@ -55,16 +55,21 @@ public:
 
 class Map {
 private:
+    std::vector<Room> rooms;
     Field field;
     ItemIdField idField;
+
     int lvlCounter = 0;
 
 public:
 
     Map(size_t width, size_t length, int numRooms = 5, size_t minRoomSize = 4, size_t maxRoomSize = 10):
-    field{MapGenerator::getDungeon(width, length, numRooms, minRoomSize, maxRoomSize)}, idField(field) {
+    field{MapGenerator::getDungeon(width, length, numRooms, minRoomSize, maxRoomSize,WallType::Stone,rooms)}, idField(field) {
     }
 
+    std::pair<Room, Room> findFurthestRooms(){
+        return MapGenerator::findFurthestRooms(rooms);
+    }
     void show() { // You can create map and call this method to look at the result
         for (int i = 0; i < field.length; ++i) {
             for (int j = 0; j < field.width; ++j) {

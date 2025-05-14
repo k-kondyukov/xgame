@@ -17,8 +17,8 @@ struct Dungeon {
     std::vector<std::vector<bool>> map;
     std::vector<Room> rooms;
 };
-class DungeonGenerator {
 
+class DungeonGenerator {
 
 
     static bool intersects(const Room &a, const Room &b) {
@@ -95,9 +95,9 @@ public:
         return dungeon;
     }
 
-    static void printMap(const std::vector<std::vector<bool>>& map) { // for debug purposes
-        for (const auto& row : map) {
-            for (bool cell : row)
+    static void printMap(const std::vector<std::vector<bool>> &map) { // for debug purposes
+        for (const auto &row: map) {
+            for (bool cell: row)
                 std::cout << (cell ? '.' : ' ');
             std::cout << '\n';
         }
@@ -202,21 +202,21 @@ public:
         }
     }
 
-    static void drawBorderWalls( Field &field, Dungeon &dungeon, size_t i, size_t j){
-        if (i > 0 && !dungeon.map[i - 1][j]){
+    static void drawBorderWalls(Field &field, Dungeon &dungeon, size_t i, size_t j) {
+        if (i > 0 && !dungeon.map[i - 1][j]) {
             field[i - 1][j].wall.orientation = WallOrientation::Front;
         }
         // Generation of other borders, style dependent
 
-       /* if (j > 0 && !dungeon.map[i][j - 1]){
-            field[i][j - 1].wall.orientation = WallOrientation::Front;
-        }
-        if (i < dungeon.map.size() - 1 && !dungeon.map[i + 1][j]){
-            field[i + 1][j].wall.orientation = WallOrientation::Front;
-        }
-        if (j < dungeon.map[i].size() - 1 && !dungeon.map[i][j + 1]){
-            field[i][j + 1].wall.orientation = WallOrientation::Front;
-        }*/
+        /* if (j > 0 && !dungeon.map[i][j - 1]){
+             field[i][j - 1].wall.orientation = WallOrientation::Front;
+         }
+         if (i < dungeon.map.size() - 1 && !dungeon.map[i + 1][j]){
+             field[i + 1][j].wall.orientation = WallOrientation::Front;
+         }
+         if (j < dungeon.map[i].size() - 1 && !dungeon.map[i][j + 1]){
+             field[i][j + 1].wall.orientation = WallOrientation::Front;
+         }*/
 
     }
 
@@ -227,14 +227,16 @@ public:
         return field;
     }
 
-    static Field getDungeon(size_t width, size_t length, size_t numRooms, size_t minRoomSize, size_t maxRoomSize, WallType type = WallType::Stone) {
+    static Field getDungeon(size_t width, size_t length, size_t numRooms, size_t minRoomSize, size_t maxRoomSize,
+                            WallType type, std::vector<Room> &rooms) {
         Field field{width, length};
         SetAllCellWallsTo(field, {WallOrientation::Full, WallType::Stone});
         auto dungeon = DungeonGenerator::generateDungeon(width, length, numRooms, minRoomSize, maxRoomSize);
+        rooms = dungeon.rooms;
         //DungeonGenerator::printMap(dungeon.map); to check how it looks
-        for(int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             for (int j = 0; j < width; ++j) {
-                if (dungeon.map[i][j]){
+                if (dungeon.map[i][j]) {
                     field[i][j].wall.type = WallType::Nothing;
                     field[i][j].floor = Floor::DefaultFloor;
                     drawBorderWalls(field, dungeon, i, j);
@@ -243,6 +245,40 @@ public:
             }
         }
         return field;
+    }
+
+    static float calculateDistance(const Room &a, const Room &b) {
+        float centerAX = a.x + a.w / 2.0f;
+        float centerAY = a.y + a.h / 2.0f;
+        float centerBX = b.x + b.w / 2.0f;
+        float centerBY = b.y + b.h / 2.0f;
+
+        return std::sqrt(std::pow(centerBX - centerAX, 2) +
+                         std::pow(centerBY - centerAY, 2));
+    };
+
+    static std::pair<Room, Room> findFurthestRooms(const std::vector<Room> &rooms) {
+        if (rooms.size() < 2) {
+            throw std::runtime_error("Need at least 2 rooms");
+        }
+
+        Room roomA = rooms[0];
+        Room roomB = rooms[1];
+        float maxDistance = 0.0f;
+
+
+        for (size_t i = 0; i < rooms.size(); ++i) {
+            for (size_t j = i + 1; j < rooms.size(); ++j) {
+                float currentDistance = calculateDistance(rooms[i], rooms[j]);
+                if (currentDistance > maxDistance) {
+                    maxDistance = currentDistance;
+                    roomA = rooms[i];
+                    roomB = rooms[j];
+                }
+            }
+        }
+
+        return {roomA, roomB};
     }
 
 };
