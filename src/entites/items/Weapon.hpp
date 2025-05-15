@@ -4,7 +4,7 @@
 #include "Object.hpp"
 
 class Weapon : public Object {
-	int distance;
+	bool isMelee;
 	int damage;
 };
 

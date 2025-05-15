@@ -7,7 +7,7 @@ struct GunDef {
 	int id;
 	std::string name;
 	int damage;
-	int range;
+	bool isMelee;
 };
 
 #endif // !GUN_DEF

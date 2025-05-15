@@ -7,7 +7,7 @@
 
 class Gun :public Weapon, public Equipment, public ChipSlots {
 	int GetDamage();
-	int GetDistance();
+	bool GetRangeType();
 };
 
 #endif // !GUN
