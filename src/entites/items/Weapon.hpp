@@ -6,9 +6,6 @@
 class Weapon : public Object {
 	int distance;
 	int damage;
-
-	int GetDamage();
-	int GetDistance();
 };
 
 #endif // !WEAPON
