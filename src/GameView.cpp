@@ -14,6 +14,7 @@ void GameView::drawMap()
 
 			cellShape.setTextureRect(sf::IntRect(sf::Vector2i(floorValue % ROW_FLOOR_TEXT_COUNT, floorValue / ROW_FLOOR_TEXT_COUNT) * TEXTURE_SIZE, 
 				sf::Vector2i(TEXTURE_SIZE, TEXTURE_SIZE)));
+			cellShape.setPosition(sf::Vector2f(TEXTURE_SIZE * x, TEXTURE_SIZE * y));
 			window.draw(cellShape);
 		}
 	}
@@ -28,6 +29,7 @@ void GameView::drawMap()
 
 			cellShape.setTextureRect(sf::IntRect(sf::Vector2i(wallValue % ROW_WALL_TEXT_COUNT, wallValue / ROW_WALL_TEXT_COUNT) * TEXTURE_SIZE,
 				sf::Vector2i(TEXTURE_SIZE, TEXTURE_SIZE)));
+			cellShape.setPosition(sf::Vector2f(TEXTURE_SIZE * x, TEXTURE_SIZE * y));
 			window.draw(cellShape);
 		}
 	}
@@ -42,8 +44,15 @@ void GameView::drawMap()
 
 			cellShape.setTextureRect(sf::IntRect(sf::Vector2i(shaderValue % ROW_WALL_TEXT_COUNT, shaderValue / ROW_WALL_TEXT_COUNT) * TEXTURE_SIZE,
 				sf::Vector2i(TEXTURE_SIZE, TEXTURE_SIZE)));
+			cellShape.setPosition(sf::Vector2f(TEXTURE_SIZE * x, TEXTURE_SIZE * y));
 			window.draw(cellShape);
 		}
+	}
+
+	// SpritePart
+	for (int i = 0; i < level.views.size(); i++)
+	{
+		window.draw(*level.views[i].get());
 	}
 }
 
