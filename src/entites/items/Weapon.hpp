@@ -6,7 +6,9 @@
 class Weapon : public Object {
 	int distance;
 	int damage;
-	virtual float Use() = 0;
+
+	int GetDamage();
+	int GetDistance();
 };
 
 #endif // !WEAPON

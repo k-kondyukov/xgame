@@ -6,7 +6,8 @@
 #include "ChipSlots.hpp"
 
 class Gun :public Weapon, public Equipment, public ChipSlots {
-	float Use() override;
+	int GetDamage();
+	int GetDistance();
 };
 
 #endif // !GUN
