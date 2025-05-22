@@ -27,10 +27,9 @@ static const float FRAMES_PER_SECOND = 60.f;
 
 class Game {
     const sf::Time TimePerFrame = sf::seconds(1.f / FRAMES_PER_SECOND);
-
     int levelHeight;
     int levelWidth;
-
+    Map map;
     sf::Image icon;
     sf::RenderWindow window{sf::VideoMode({800, 800}),
                             "Project X",sf::Style::Titlebar | sf::Style::Close};
@@ -39,6 +38,7 @@ class Game {
 
     CoordinateView view;
     std::optional<MovingObject> player;
+    std::optional<MovingObject> enemy;
     TextureManager textures;
 
 
@@ -48,12 +48,13 @@ private:
         textures.addResource("wall", "assets/tiles/wall.png");
         textures.addResource("solid wall", "assets/tiles/wall_solid.png");
         textures.addResource("player", "assets/characters/player.png");
+        textures.addResource("enemy", "assets/characters/enemy.png");
     }
 
 
 public:
     explicit Game(int levelWidth = 50, int levelHeight = 50) :
-            levelHeight(levelHeight), levelWidth(levelWidth),
+            levelHeight(levelHeight), levelWidth(levelWidth), map(levelWidth, levelHeight, 20),
             view(visibleHeight, visibleWidth, levelWidth, levelHeight, textures) {
         if (icon.loadFromFile("assets/gameIcon.png")) {
             window.setIcon(icon);
@@ -66,9 +67,7 @@ public:
     int run() {
         sf::Clock clock;
         sf::Time timeSinceLastUpdate = sf::Time::Zero;
-        Map map(levelWidth, levelHeight, 20);
-
-        initializeLvl(map);
+        initializeLvl();
 
 
         while (window.isOpen()) {
@@ -76,6 +75,7 @@ public:
             while (timeSinceLastUpdate > TimePerFrame) {
                 timeSinceLastUpdate -= TimePerFrame;
                 processEvents();
+                gameLogic();
             }
           
             render();
@@ -83,7 +83,8 @@ public:
         return 0;
     }
 
-    void initializeLvl(Map &map) {
+    void initializeLvl() {
+        map.regenerate();
         map.show();
         auto &field = map.getField();
         for (int y = 0; y < levelHeight; ++y) {
@@ -104,18 +105,24 @@ public:
         auto rooms = map.findFurthestRooms();
         MovingObject pl("player", {rooms.first.x + 1, rooms.first.y + 1}, map.getField(), view);
         player.emplace(pl);
-
+        MovingObject en("enemy", {rooms.second.x + 1, rooms.second.y + 1}, map.getField(), view);
+        enemy.emplace(en);
         view.setCenteredViewPosition(player->getPlace());
         view.addImage(player->getPlace(), "player");
+        view.addImage({enemy->getPlace()}, "enemy");
     }
 
     void render() {
         window.clear();
-        //window.draw(backgroundSprite);
         window.draw(view);
         window.display();
     }
 
+    void gameLogic(){
+        if (player.value().getPlace() == enemy.value().getPlace()){
+            initializeLvl();
+        }
+    }
     void processEvents() {
         const auto onClose = [this](const sf::Event::Closed &) {
             window.close();

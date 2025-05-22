@@ -147,10 +147,17 @@ struct Cell {
     }
 };
 
-struct Field {
-    const size_t width, height;
+class Field {
+    size_t width, height;
     std::vector<std::vector<Cell>> val;
 
+public:
+    [[nodiscard]] size_t getWidth() const{
+        return width;
+    }
+    [[nodiscard]] size_t getHeight() const{
+        return height;
+    }
     std::vector<Cell> &operator[](size_t i) {
         return val[i];
     };
@@ -176,26 +183,26 @@ public:
     }
 
     static void SetAllCellWallsTo(Field &field, Wall wall) {
-        for (size_t i = 0; i < field.height; ++i)
-            for (size_t j = 0; j < field.width; ++j)
+        for (size_t i = 0; i < field.getHeight(); ++i)
+            for (size_t j = 0; j < field.getWidth(); ++j)
                 field[i][j].wall = wall;
     }
 
     static void SetAllCellShadersTo(Field &field, Shader shader) {
-        for (size_t i = 0; i < field.height; ++i)
-            for (size_t j = 0; j < field.width; ++j)
+        for (size_t i = 0; i < field.getHeight(); ++i)
+            for (size_t j = 0; j < field.getWidth(); ++j)
                 field[i][j].shader = shader;
     }
 
     static void SetAllCellFloorsTo(Field &field, Floor floor) {
-        for (size_t i = 0; i < field.height; ++i)
-            for (size_t j = 0; j < field.width; ++j)
+        for (size_t i = 0; i < field.getHeight(); ++i)
+            for (size_t j = 0; j < field.getWidth(); ++j)
                 field[i][j].floor = floor;
     }
 
     static void buildRoomWalls(Field &field, WallType type = WallType::Stone) {
-        for (size_t y = 1; y < field.height - 1; ++y) {
-            for (size_t x = 1; x < field.width - 1; ++x) {
+        for (size_t y = 1; y < field.getHeight() - 1; ++y) {
+            for (size_t x = 1; x < field.getWidth() - 1; ++x) {
                 if (field[y][x].wall.type == WallType::Nothing) {
                     for (int dy = -1; dy <= 1; ++dy) {
                         for (int dx = -1; dx <= 1; ++dx) {

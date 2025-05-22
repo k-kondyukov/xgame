@@ -23,7 +23,7 @@ class MovingObject {
 
     bool moveIfPossible(Coord newPlace) {
         if (newPlace.x < 0 || newPlace.y < 0 ||
-            newPlace.x >= field.width || newPlace.y >= field.height ||
+            newPlace.x >= field.getWidth() || newPlace.y >= field.getHeight() ||
             !field[newPlace.y][newPlace.x].passable()) {
             return false;
         }
