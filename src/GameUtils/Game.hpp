@@ -3,7 +3,6 @@
 #include <iostream>
 #include "../level/Level.hpp"
 
-#include "GameContext.h"
 #include "TextureManager.h"
 #include "../level/Map.hpp"
 #include "CoordinateView.h"
@@ -41,7 +40,6 @@ class Game {
     CoordinateView view;
     std::optional<MovingObject> player;
     TextureManager textures;
-    GameContext context{window};
 
 
 private:
@@ -49,7 +47,6 @@ private:
         textures.addResource("floor", "assets/tiles/floor.png");
         textures.addResource("wall", "assets/tiles/wall.png");
         textures.addResource("solid wall", "assets/tiles/wall_solid.png");
-        textures.addResource("background", "assets/background.jpg");
         textures.addResource("player", "assets/characters/player.png");
     }
 
@@ -58,7 +55,7 @@ public:
     explicit Game(int levelWidth = 50, int levelHeight = 50) :
             levelHeight(levelHeight), levelWidth(levelWidth),
             view(visibleHeight, visibleWidth, levelWidth, levelHeight, textures) {
-        if (icon.loadFromFile("assets/gameIcon.jpg")) {
+        if (icon.loadFromFile("assets/gameIcon.png")) {
             window.setIcon(icon);
         }
         loadResources();
@@ -95,7 +92,6 @@ public:
                 if (cell.floor == Floor::DefaultFloor) {
                     view.addImage({x, y}, "floor");
                 }
-
                 if (cell.wall.orientation == WallOrientation::Front && cell.wall.type == WallType::Stone) {
                     view.addImage({x, y}, "wall");
                 } else if (cell.wall.orientation == WallOrientation::Full && cell.wall.type == WallType::Stone) {
