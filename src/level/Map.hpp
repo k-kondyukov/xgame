@@ -65,7 +65,7 @@ private:
 public:
 
     Map(size_t width, size_t length, int numRooms = 5, size_t minRoomSize = 4, size_t maxRoomSize = 10):
-    field{MapGenerator::getDungeon(width, length, numRooms, minRoomSize, maxRoomSize,WallType::Stone,rooms)}, idField(field) {
+    field{MapGenerator::getDungeon(width, length, numRooms, minRoomSize, maxRoomSize,WallType::Stone,rooms)}{
     }
 
     std::pair<Room, Room> findFurthestRooms(){
