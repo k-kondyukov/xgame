@@ -18,7 +18,6 @@ public:
 };
 
 #endif // !MAP
-=======
 // author: ya_ntar
 // basic map generation ticket
 #pragma once

@@ -17,12 +17,13 @@ public:
 	int LevelCounter;
 	Map map;
 	sf::Vector2i endLevelPos;
+	std::vector<std::unique_ptr<View>> views;
+	std::vector<SpMap> spMap;
 
 	Level();
 
 	void Save(const std::string& path);
 	void Load(const std::string& path);
-
 	void GetMap();
 };
 
