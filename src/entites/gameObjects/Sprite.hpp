@@ -13,11 +13,23 @@ class Sprite:public GameObject {
 	SpMap spMap;
 	std::unique_ptr<Level> level;
 
-	void Move(float delta)
+	int damage;
+	int armor;
+
+	int strength;
+	int dexterity;
+	int intelegnce;
+
+	int maxArmor;
+	int maxStrength;
+	int maxDexterity;
+	int maxIntelegnce;
+
+	void Move(float delta);
 	bool checkColission(sf::Vector2f position);
 
-	void TakeDamage(int damage) =0;
-	void DealDamage(std::unique_ptr<GameObject> target) =0;
+	void TakeDamage(int damage) = 0;
+	void DealDamage(std::unique_ptr<GameObject> target) = 0;
 };
 
 #endif // !SPRITE

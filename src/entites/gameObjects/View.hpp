@@ -3,9 +3,14 @@
 
 #include "SFML/Graphics.hpp"
 
-class View {
-	virtual void Draw(sf::RenderWindow*) = 0;
+#include "SFML/Graphics/RenderTarget.hpp"
+#include "SFML/Graphics/RenderStates.hpp"
+
+class View : public sf::Drawable
+{
+public:
 	virtual void Update(float deltaTime) = 0;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) = 0;
 };
 
 #endif // !VIEW

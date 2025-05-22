@@ -73,8 +73,8 @@ void Load(const std::string& path) {
     endLevelPos.x = std::stoi(full.substr(full.find("EndPos") + 8, full.find(" ", full.find("EndPos") + 8) - (full.find("EndPos") + 8)));
     endLevelPos.y = std::stoi(full.substr(full.find(" ", full.find("EndPos") + 9), full.find("\n", full.find("EndPos"))));
 
-    int X = size(floor.substr(0, floor.find("\n"))); //длина по X карты
-    int Y = (size(floor)) / (X + 1); //длина по Y карты
+    int X = size(floor.substr(0, floor.find("\n"))); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ X пїЅпїЅпїЅпїЅпїЅ
+    int Y = (size(floor)) / (X + 1); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ Y пїЅпїЅпїЅпїЅпїЅ
     std::vector<int> s(X);
 
     int x = 0, y = 0;
