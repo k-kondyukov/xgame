@@ -151,6 +151,9 @@ struct Field {
     std::vector<Cell> &operator[](size_t i) {
         return val[i];
     };
+    const std::vector<Cell> &operator[](size_t i) const {
+        return val[i];
+    };
 
     Field(size_t width, size_t length)
             : width(width), length(length), val(length, std::vector<Cell>(width)) {}
