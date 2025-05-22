@@ -142,10 +142,13 @@ struct Cell {
     Shader shader = Shader::Default;
     Floor floor = Floor::DefaultFloor;
     Wall wall{WallOrientation::Front, WallType::Nothing};
+    [[nodiscard]] bool passable() const{
+        return wall.type == WallType::Nothing;
+    }
 };
 
 struct Field {
-    const size_t width, length;
+    const size_t width, height;
     std::vector<std::vector<Cell>> val;
 
     std::vector<Cell> &operator[](size_t i) {
@@ -156,7 +159,7 @@ struct Field {
     };
 
     Field(size_t width, size_t length)
-            : width(width), length(length), val(length, std::vector<Cell>(width)) {}
+            : width(width), height(length), val(length, std::vector<Cell>(width)) {}
 };
 
 
@@ -173,25 +176,25 @@ public:
     }
 
     static void SetAllCellWallsTo(Field &field, Wall wall) {
-        for (size_t i = 0; i < field.length; ++i)
+        for (size_t i = 0; i < field.height; ++i)
             for (size_t j = 0; j < field.width; ++j)
                 field[i][j].wall = wall;
     }
 
     static void SetAllCellShadersTo(Field &field, Shader shader) {
-        for (size_t i = 0; i < field.length; ++i)
+        for (size_t i = 0; i < field.height; ++i)
             for (size_t j = 0; j < field.width; ++j)
                 field[i][j].shader = shader;
     }
 
     static void SetAllCellFloorsTo(Field &field, Floor floor) {
-        for (size_t i = 0; i < field.length; ++i)
+        for (size_t i = 0; i < field.height; ++i)
             for (size_t j = 0; j < field.width; ++j)
                 field[i][j].floor = floor;
     }
 
     static void buildRoomWalls(Field &field, WallType type = WallType::Stone) {
-        for (size_t y = 1; y < field.length - 1; ++y) {
+        for (size_t y = 1; y < field.height - 1; ++y) {
             for (size_t x = 1; x < field.width - 1; ++x) {
                 if (field[y][x].wall.type == WallType::Nothing) {
                     for (int dy = -1; dy <= 1; ++dy) {

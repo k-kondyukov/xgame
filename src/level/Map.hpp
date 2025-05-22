@@ -72,7 +72,7 @@ public:
         return MapGenerator::findFurthestRooms(rooms);
     }
     void show() { // You can create map and call this method to look at the result
-        for (int i = 0; i < field.length; ++i) {
+        for (int i = 0; i < field.height; ++i) {
             for (int j = 0; j < field.width; ++j) {
                 if(field[i][j].wall.type == WallType::Nothing) {
                     std::cout << ' ';
