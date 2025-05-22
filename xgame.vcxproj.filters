@@ -83,7 +83,7 @@
     <ClInclude Include="src\entites\gameObjects\GameObject.hpp">
       <Filter>Файлы заголовков\entities\gameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="src\entites\gameObjects\Player.hpp">
+    <ClInclude Include="src\entites\gameObjects\MovingObject.hpp">
       <Filter>Файлы заголовков\entities\gameObjects</Filter>
     </ClInclude>
     <ClInclude Include="src\entites\gameObjects\Sprite.hpp">
