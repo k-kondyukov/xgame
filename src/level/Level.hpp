@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
+
 #include "SFML/Graphics.hpp"
 #include "data/SpMap.hpp"
 #include "Map.hpp"
@@ -20,8 +22,8 @@ public:
 
 	Level();
 
-	void Save();
-	void Load();
+	void Save(const std::string& path);
+	void Load(const std::string& path);
 	void GetMap();
 };
 
