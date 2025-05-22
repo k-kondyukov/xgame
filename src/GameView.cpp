@@ -29,6 +29,7 @@ void GameView::drawMap()
 
 			cellShape.setTextureRect(sf::IntRect(sf::Vector2i(wallValue % ROW_WALL_TEXT_COUNT, wallValue / ROW_WALL_TEXT_COUNT) * TEXTURE_SIZE,
 				sf::Vector2i(TEXTURE_SIZE, TEXTURE_SIZE)));
+
 			cellShape.setPosition(sf::Vector2f(TEXTURE_SIZE * x, TEXTURE_SIZE * y));
 			window.draw(cellShape);
 		}
