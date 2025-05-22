@@ -7,7 +7,7 @@ struct GunDef {
 	int id;
 	std::string name;
 	int damage;
-	bool isMelee;
+
 	GunDef(const int& id, const std::string& name, const int& damage, const bool& isMelee) : id(id), name(name), damage(damage), isMelee(isMelee) {}
 };
 

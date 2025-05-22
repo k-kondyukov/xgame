@@ -1,3 +1,7 @@
+
+#include "Resources.hpp"
+#include <SFML/Graphics.hpp>
+#include <iostream>
 #include <vector>
 #include "ArmorDef.hpp"
 #include "ArtifactDef.hpp"
@@ -7,13 +11,13 @@
 #include "SpDef.hpp"
 
 static std::vector<ArmorDef> Resources::armors = {
-	ArmorDef(1, "Кожаный костюм", 5),
-	ArmorDef(2, "Обмотки мародера", 10)
+	ArmorDef(1, "ГЉГ®Г¦Г Г­Г»Г© ГЄГ®Г±ГІГѕГ¬", 5),
+	ArmorDef(2, "ГЋГЎГ¬Г®ГІГЄГЁ Г¬Г Г°Г®Г¤ГҐГ°Г ", 10)
 };
 
 static std::vector<ArtifactDef> Resources::artifacts = {
-	ArtifactDef(3, "Прометей", 10, 3),
-	ArtifactDef(4, "Громовержец", 20, 4)
+	ArtifactDef(3, "ГЏГ°Г®Г¬ГҐГІГҐГ©", 10, 3),
+	ArtifactDef(4, "ГѓГ°Г®Г¬Г®ГўГҐГ°Г¦ГҐГ¶", 20, 4)
 };
 
 static std::vector<SpDef> Resources::enemies = {
@@ -22,19 +26,19 @@ static std::vector<SpDef> Resources::enemies = {
 };
 
 static std::vector<GunDef> Resources::weapons = {
-	GunDef(7, "Меч", 7, 1),
-	GunDef(8, "Лук", 4, 5)
+	GunDef(7, "ГЊГҐГ·", 7, 1),
+	GunDef(8, "Г‹ГіГЄ", 4, 5)
 };
 
 static std::vector<DiscDef> Resources::descriptions = {
-	DiscDef(1, "Просто кожаный костюмчик коричневого цвета"),
-	DiscDef(2, "Мародерские обмотки, характерные для одежды мародеров"),
-	DiscDef(3, "Механический факел, с горящим пламенем и трубками на выхлоп как у техники"),
-	DiscDef(4, "Посох с катушкой Тесла"),
-	DiscDef(5, "Агрессивный волк"),
-	DiscDef(6, "Паук-переросток"),
-	DiscDef(7, "Достаточно банальный меч"),
-	DiscDef(8, "Лук-порей")
+	DiscDef(1, "ГЏГ°Г®Г±ГІГ® ГЄГ®Г¦Г Г­Г»Г© ГЄГ®Г±ГІГѕГ¬Г·ГЁГЄ ГЄГ®Г°ГЁГ·Г­ГҐГўГ®ГЈГ® Г¶ГўГҐГІГ "),
+	DiscDef(2, "ГЊГ Г°Г®Г¤ГҐГ°Г±ГЄГЁГҐ Г®ГЎГ¬Г®ГІГЄГЁ, ГµГ Г°Г ГЄГІГҐГ°Г­Г»ГҐ Г¤Г«Гї Г®Г¤ГҐГ¦Г¤Г» Г¬Г Г°Г®Г¤ГҐГ°Г®Гў"),
+	DiscDef(3, "ГЊГҐГµГ Г­ГЁГ·ГҐГ±ГЄГЁГ© ГґГ ГЄГҐГ«, Г± ГЈГ®Г°ГїГ№ГЁГ¬ ГЇГ«Г Г¬ГҐГ­ГҐГ¬ ГЁ ГІГ°ГіГЎГЄГ Г¬ГЁ Г­Г  ГўГ»ГµГ«Г®ГЇ ГЄГ ГЄ Гі ГІГҐГµГ­ГЁГЄГЁ"),
+	DiscDef(4, "ГЏГ®Г±Г®Гµ Г± ГЄГ ГІГіГёГЄГ®Г© Г’ГҐГ±Г«Г "),
+	DiscDef(5, "ГЂГЈГ°ГҐГ±Г±ГЁГўГ­Г»Г© ГўГ®Г«ГЄ"),
+	DiscDef(6, "ГЏГ ГіГЄ-ГЇГҐГ°ГҐГ°Г®Г±ГІГ®ГЄ"),
+	DiscDef(7, "Г„Г®Г±ГІГ ГІГ®Г·Г­Г® ГЎГ Г­Г Г«ГјГ­Г»Г© Г¬ГҐГ·"),
+	DiscDef(8, "Г‹ГіГЄ-ГЇГ®Г°ГҐГ©")
 };
 
 static std::vector<CostDef> Resources::costs = {
@@ -42,4 +46,24 @@ static std::vector<CostDef> Resources::costs = {
 	CostDef(2, 7),
 	CostDef(7, 5),
 	CostDef(8, 3)
+
+sf::Texture Resources::wallsTexture;
+sf::Texture Resources::floorTexture;
+sf::Texture Resources::shaderTexture;
+
+void Resources::init() {
+    if (!wallsTexture.loadFromFile("sprites/walls.png")) {
+        std::cerr << "ГЋГёГЁГЎГЄГ  Г§Г ГЈГ°ГіГ§ГЄГЁ ГІГҐГЄГ±ГІГіГ°Г» walls.png" << std::endl;
+        exit(1);
+    }
+
+    if (!floorTexture.loadFromFile("sprites/floor.png")) {
+        std::cerr << "ГЋГёГЁГЎГЄГ  Г§Г ГЈГ°ГіГ§ГЄГЁ ГІГҐГЄГ±ГІГіГ°Г» floor.png" << std::endl;
+        exit(1);
+    }
+
+    if (!shaderTexture.loadFromFile("sprites/shader.png")) {
+        std::cerr << "ГЋГёГЁГЎГЄГ  Г§Г ГЈГ°ГіГ§ГЄГЁ ГІГҐГЄГ±ГІГіГ°Г» shader.png" << std::endl;
+        exit(1);
+    }
 }

@@ -4,6 +4,7 @@
 struct CostDef {
 	int id;
 	int price;
+
 	CostDef(const int& id, const int& price) : id(id), price(price) {}
 };
 
