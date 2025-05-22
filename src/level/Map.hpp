@@ -1,23 +1,4 @@
-#ifndef MAP
-#define MAP
-
-#include <iostream>
-#include <vector>
-
-class Map
-{
-public:
-	int lvlCounter;
-	std::vector<std::vector<int>> wall;
-	std::vector<std::vector<int>> floor;
-	std::vector<std::vector<int>> shader;
-
-	Map();
-
-	void Generate(std::string parametrs);
-};
-
-#endif // !MAP
+// !MAP
 // author: ya_ntar
 // basic map generation ticket
 #pragma once
@@ -34,7 +15,7 @@ struct CellID {
     IDType shader;
 };
 
-class ItemIdField { //toDo: Подвязать ID, соответствующие этим объектам.
+/*class ItemIdField { //toDo: Подвязать ID, соответствующие этим объектам.
 private:
     const size_t width, length;
     std::vector<std::vector<CellID>> id;
@@ -71,13 +52,13 @@ public:
         }
 
     }
-};
+};*/
 
 class Map {
 private:
     std::vector<Room> rooms;
     Field field;
-    ItemIdField idField;
+/*    ItemIdField idField;*/
 
     int lvlCounter = 0;
 
@@ -109,15 +90,7 @@ public:
         return field;
     }
 
-    const Field& getIdField(){
-        return field;
-    }
 
-    // toDo: (напишу на русском)
-    //  На данный момент оба геттера константные, потому как изменений окружения не предвидится.
-    //  В случае, если это понадобится, а система ID не будет изменена,
-    //  нужно будет связать idField и field, чтобы при изменении второго всегда менялся первый.
-    //  Сделать это можно через связывание двух объектов по указателям Или updat-инге IdField-а в геттере.
 
 
 };
