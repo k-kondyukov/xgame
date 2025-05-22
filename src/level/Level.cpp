@@ -1,6 +1,5 @@
 #include "Level.hpp"
 
-
 void Save(const std::string& path) {
     std::fstream file;
     file.open(path, std::fstream::out);

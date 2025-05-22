@@ -4,9 +4,12 @@
 #include "Object.hpp"
 
 class Weapon : public Object {
-	int distance;
+
+	bool isMelee;
 	int damage;
+
 	virtual float Use() = 0;
+
 };
 
 #endif // !WEAPON

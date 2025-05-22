@@ -2,7 +2,6 @@
 #define VIEW
 
 #include "SFML/Graphics.hpp"
-
 #include "SFML/Graphics/RenderTarget.hpp"
 #include "SFML/Graphics/RenderStates.hpp"
 

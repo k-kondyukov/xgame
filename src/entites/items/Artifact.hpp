@@ -7,6 +7,7 @@
 
 class Artifact: public Weapon, public Equipment, public ChipSlots {
 	int manacost;
+
 	float Use() override;
 };
 

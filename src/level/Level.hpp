@@ -24,6 +24,7 @@ public:
 
 	void Save(const std::string& path);
 	void Load(const std::string& path);
+
 	void GetMap();
 };
 
