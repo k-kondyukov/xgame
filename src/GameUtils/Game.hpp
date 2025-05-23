@@ -23,7 +23,7 @@
 static const int TILE_SIZE = 64;
 
 
-static const float FRAMES_PER_SECOND = 60.f;
+static const float FRAMES_PER_SECOND = 120.f;
 
 class Game {
     const sf::Time TimePerFrame = sf::seconds(1.f / FRAMES_PER_SECOND);
@@ -31,7 +31,7 @@ class Game {
     int levelWidth;
     Map map;
     sf::Image icon;
-    sf::RenderWindow window{sf::VideoMode({800, 800}),
+    sf::RenderWindow window{sf::VideoMode({640, 640}),
                             "Project X",sf::Style::Titlebar | sf::Style::Close};
     int visibleWidth = (int) window.getSize().x / TILE_SIZE;
     int visibleHeight = (int) window.getSize().y / TILE_SIZE;
@@ -86,6 +86,8 @@ public:
     void initializeLvl() {
         map.regenerate();
         map.show();
+        view.clear();
+
         auto &field = map.getField();
         for (int y = 0; y < levelHeight; ++y) {
             for (int x = 0; x < levelWidth; ++x) {

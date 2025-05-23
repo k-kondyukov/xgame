@@ -28,6 +28,14 @@ public:
               textures(textures) {
         drawableField.resize(realHeight, std::vector<std::vector<ID >>(realWidth));
     }
+    void clear(){
+        for (auto &row: drawableField) {
+            for (auto &layers: row) {
+                layers.clear();
+            }
+        }
+
+    }
 
     void deleteImage(Coord where, ID what) {
         if (where.y < 0 || where.y >= drawableField.size() ||
