@@ -48,3 +48,5 @@ SFML/bin/
 *.tmp
 *.bak
 *.~*
+/cmake-build-debug/.cmake
+/cmake-build-debug

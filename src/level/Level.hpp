@@ -1,3 +1,4 @@
+/*
 #ifndef LEVEL_HPP
 #define LEVEL_HPP
 
@@ -6,7 +7,6 @@
 #include <fstream>
 
 #include "SFML/Graphics.hpp"
-#include "data/SpMap.hpp"
 #include "Map.hpp"
 #include "Observer.hpp"
 #include "entites/gameObjects/View.hpp"
@@ -28,4 +28,4 @@ public:
 	void GetMap();
 };
 
-#endif // !LEVEL_HPP
+#endif // !LEVEL_HPP*/

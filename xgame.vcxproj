@@ -154,7 +154,7 @@
     <ClInclude Include="src\entites\gameObjects\Animator.hpp" />
     <ClInclude Include="src\entites\gameObjects\Entity.hpp" />
     <ClInclude Include="src\entites\gameObjects\GameObject.hpp" />
-    <ClInclude Include="src\entites\gameObjects\Player.hpp" />
+    <ClInclude Include="src\entites\gameObjects\MovingObject.hpp" />
     <ClInclude Include="src\entites\gameObjects\Sprite.hpp" />
     <ClInclude Include="src\entites\gameObjects\View.hpp" />
     <ClInclude Include="src\entites\items\Armor.hpp" />
