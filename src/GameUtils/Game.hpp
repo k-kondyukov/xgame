@@ -60,9 +60,7 @@ public:
         view(visibleHeight, visibleWidth, levelWidth, levelHeight, textures) {
         if (icon.loadFromFile("assets/gameIcon.png")) {
             window.setIcon(icon);
-            std::cout << "fdfvs";
         }
-        std::cout << "no if";
         loadResources();
 
     }
@@ -130,6 +128,7 @@ public:
         MovingObject pl("player", {rooms.first.x + 1, rooms.first.y + 1}, map.getField(), view);
         player.emplace(pl);
         Enemy en("enemy", {rooms.second.x + 1, rooms.second.y + 1}, map.getField(), view, &player);
+        //Enemy en("enemy", { pl.getPlace().x + 2, pl.getPlace().y + 2 }, map.getField(), view, &player); //for debug, to place the enemy near the player
         enemy.emplace(en);
         view.setCenteredViewPosition(player->getPlace());
         view.addImage(player->getPlace(), "player");
