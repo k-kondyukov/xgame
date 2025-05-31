@@ -8,6 +8,8 @@
 #include "../level/MapGenerator.h"
 
 class MovingObject {
+protected:
+
     ID id;
     Coord place;
     const Field &field;
@@ -16,10 +18,6 @@ class MovingObject {
     void deleteView() { view.deleteImage(place, id); }
 
     void addView() { view.addImage(place, id); }
-
-    void updatePov() {
-        view.setCenteredViewPosition(place);
-    }
 
     bool moveIfPossible(Coord newPlace) {
         if (newPlace.x < 0 || newPlace.y < 0 ||
@@ -31,8 +29,22 @@ class MovingObject {
         deleteView();
         place = newPlace;
         addView();
-        updatePov();
         return true;
+    }
+
+    bool moveRundomIfPossible() {
+
+        std::vector<Coord> shuffledDirs = { {place.x, place.y - 1}, {place.x, place.y + 1}, {place.x - 1, place.y}, {place.x + 1, place.y} };
+
+        std::shuffle(shuffledDirs.begin(), shuffledDirs.end(), std::mt19937(std::random_device()()));
+
+        for (Coord newPlace : shuffledDirs) {
+            if (moveIfPossible(newPlace)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 public:

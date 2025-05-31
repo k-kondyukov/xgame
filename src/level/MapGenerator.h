@@ -9,6 +9,9 @@
 #include <set>
 #include <queue>
 #include <cmath>
+#include <SFML/System/Vector2.hpp>
+
+using Coord = sf::Vector2i;
 
 struct Room {
     int x, y, w, h;
@@ -151,6 +154,96 @@ class Field {
     size_t width, height;
     std::vector<std::vector<Cell>> val;
 
+
+    std::vector<Cell*> getLineCellsH(int x0, int y0, int x1, int y1) const  {
+
+        // this is Bresenham's Line Algorithm (for horisontal lines), good explainer -- https://www.youtube.com/watch?v=CceepU1vIKo
+
+        std::vector<Cell*> cells;
+
+
+        if (x0 > x1) { // определяем наклон
+            std::swap(x0, x1);
+            std::swap(y0, y1);
+        }
+
+        int dx = x1 - x0;
+        int dy = y1 - y0;
+
+        int dir = dy < 0 ? -1 : 1;
+        dy *= dir;
+
+        int p; // desision param
+
+        if (dx != 0) {
+            int y = y0;
+            p = 2 * dy - dx;
+
+            for (int i = 1; i < dx; i++) {
+                cells.push_back(const_cast<Cell*>(&val[y][x0 + i]));
+
+                if (p >= 0) {
+                    y += dir;
+                    p -= 2 * dx;
+                }
+                p += 2 * dy;
+            }
+        }
+
+        return cells;
+    }
+
+    std::vector<Cell*> getLineCellsV(int x0, int y0, int x1, int y1) const {
+
+        // this is Bresenham's Line Algorithm (for vertical lines), good explainer -- https://www.youtube.com/watch?v=CceepU1vIKo
+
+        std::vector<Cell*> cells;
+
+
+        if (y0 > y1) { // определяем наклон
+            std::swap(x0, x1);
+            std::swap(y0, y1);
+        }
+
+        int dx = x1 - x0;
+        int dy = y1 - y0;
+
+        int dir = dx < 0 ? -1 : 1;
+        dx *= dir;
+
+        int p; // desision param
+
+        if (dy != 0) {
+            p = 2 * dx - dy;
+            int x = x0;
+
+            for (int i = 1; i < dy; i++) {
+                cells.push_back(const_cast<Cell*>(&val[y0 + i][x]));
+
+                if (p >= 0) {
+                    x += dir;
+                    p -= 2 * dy;
+                }
+                p += 2 * dx;
+            }
+        }
+
+        return cells;
+    }
+
+    std::vector<Cell*> getLineCells(const Coord& coord0, const Coord& coord1) const {
+
+        int x0 = coord0.x;
+        int y0 = coord0.y;
+        int x1 = coord1.x;
+        int y1 = coord1.y;
+
+        if (abs(x1 - x0) > abs(y1 - y0)) { // определяем, горизонтальная ли линия
+            return getLineCellsH(x0, y0, x1, y1);
+        }
+        return getLineCellsV(x0, y0, x1, y1);
+    }
+
 public:
     [[nodiscard]] size_t getWidth() const{
         return width;
@@ -167,6 +260,19 @@ public:
 
     Field(size_t width, size_t length)
             : width(width), height(length), val(length, std::vector<Cell>(width)) {}
+
+
+    bool isObjectVisible(const Coord& enemy, const Coord& player) const {
+        const std::vector<Cell*> lineCells = getLineCells(enemy, player);
+
+        for (Cell* cell : lineCells) {
+            if (!cell->passable()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 };
 
 
