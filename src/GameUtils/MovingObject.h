@@ -8,6 +8,8 @@
 #include "../level/MapGenerator.h"
 
 class MovingObject {
+protected:
+
     ID id;
     Coord place;
     const Field &field;
@@ -16,10 +18,6 @@ class MovingObject {
     void deleteView() { view.deleteImage(place, id); }
 
     void addView() { view.addImage(place, id); }
-
-    void updatePov() {
-        view.setCenteredViewPosition(place);
-    }
 
     bool moveIfPossible(Coord newPlace) {
         if (newPlace.x < 0 || newPlace.y < 0 ||
@@ -31,8 +29,22 @@ class MovingObject {
         deleteView();
         place = newPlace;
         addView();
-        updatePov();
         return true;
+    }
+
+    bool moveRundomIfPossible() {
+
+        std::vector<Coord> shuffledDirs = { {place.x, place.y - 1}, {place.x, place.y + 1}, {place.x - 1, place.y}, {place.x + 1, place.y} };
+
+        std::shuffle(shuffledDirs.begin(), shuffledDirs.end(), std::mt19937(std::random_device()()));
+
+        for (Coord newPlace : shuffledDirs) {
+            if (moveIfPossible(newPlace)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 public:
@@ -42,20 +54,82 @@ public:
 
     Coord getPlace() const { return place; }
 
-    void up() {
-        moveIfPossible({place.x, place.y - 1});
+    bool up() {
+        return moveIfPossible({place.x, place.y - 1});
     }
 
-    void down() {
-        moveIfPossible({place.x, place.y + 1});
+    bool down() {
+        return moveIfPossible({place.x, place.y + 1});
     }
 
-    void left() {
-        moveIfPossible({place.x - 1, place.y});
+    bool left() {
+        return moveIfPossible({place.x - 1, place.y});
     }
 
-    void right() {
-        moveIfPossible({place.x + 1, place.y});
+    bool right() {
+        return moveIfPossible({place.x + 1, place.y});
+    }
+
+    void goTowards(const Coord& to_pos) {
+
+        Coord betweenVec = to_pos - place;
+
+        // этот ужас конечно же надо почистить, но пока чтош
+        // this crazy mess of cource needs some clean up, but for now oh well...
+        if (abs(betweenVec.x) > abs(betweenVec.y)) {
+            if (betweenVec.x > 0) {
+
+                if (!right()) {
+
+                    if (betweenVec.y > 0) {
+                        down();
+                    }
+                    else {
+                        up();
+                    }
+                }
+            }
+            else {
+                if (!left()) {
+
+                    if (betweenVec.y > 0) {
+                        down();
+                    }
+                    else {
+                        up();
+                    }
+                }
+            }
+        }
+        else {
+            if (betweenVec.y > 0) {
+                if (!down()) {
+
+                    if (betweenVec.x > 0) {
+
+                        right();
+                    }
+                    else {
+
+                        left();
+                    }
+                }
+            }
+            else {
+                if (!up()) {
+
+                    if (betweenVec.x > 0) {
+
+                        right();
+                    }
+                    else {
+
+                        left();
+                    }
+
+                }
+            }
+        }
     }
 };
 

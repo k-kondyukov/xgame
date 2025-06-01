@@ -50,3 +50,10 @@ SFML/bin/
 *.~*
 /cmake-build-debug/.cmake
 /cmake-build-debug
+
+/Debug
+/lib
+/out
+/xgame/Debug
+CMakeLists.txt
+CMakeSettings.json

@@ -7,6 +7,7 @@
 #include "../level/Map.hpp"
 #include "CoordinateView.h"
 #include "MovingObject.h"
+#include "Enemy.h"
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -38,12 +39,13 @@ class Game {
 
     CoordinateView view;
     std::optional<MovingObject> player;
-    std::optional<MovingObject> enemy;
+    std::optional<Enemy> enemy;
     TextureManager textures;
 
 
 private:
     void loadResources() {
+
         textures.addResource("floor", "assets/tiles/floor.png");
         textures.addResource("wall", "assets/tiles/wall.png");
         textures.addResource("solid wall", "assets/tiles/wall_solid.png");
@@ -54,8 +56,8 @@ private:
 
 public:
     explicit Game(int levelWidth = 50, int levelHeight = 50) :
-            levelHeight(levelHeight), levelWidth(levelWidth), map(levelWidth, levelHeight, 20),
-            view(visibleHeight, visibleWidth, levelWidth, levelHeight, textures) {
+        levelHeight(levelHeight), levelWidth(levelWidth), map(levelWidth, levelHeight, 20),
+        view(visibleHeight, visibleWidth, levelWidth, levelHeight, textures) {
         if (icon.loadFromFile("assets/gameIcon.png")) {
             window.setIcon(icon);
         }
@@ -63,7 +65,7 @@ public:
 
     }
 
-
+    
     int run() {
         sf::Clock clock;
         sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -72,14 +74,32 @@ public:
 
         while (window.isOpen()) {
             timeSinceLastUpdate += clock.restart();
+
             while (timeSinceLastUpdate > TimePerFrame) {
                 timeSinceLastUpdate -= TimePerFrame;
-                processEvents();
+
+                while (const std::optional _event = window.pollEvent()) {
+
+                    if (_event->is<sf::Event::Closed>())
+                        window.close();
+
+                    if (const auto* keyPressed = _event->getIf<sf::Event::KeyPressed>()) {
+                        if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
+                            window.close();
+                        }
+                        else {
+                            handlePlayerInput(keyPressed->code);
+                        }
+                    }
+
+                }
                 gameLogic();
             }
           
             render();
         }
+
+        std::cout << "run";
         return 0;
     }
 
@@ -107,7 +127,8 @@ public:
         auto rooms = map.findFurthestRooms();
         MovingObject pl("player", {rooms.first.x + 1, rooms.first.y + 1}, map.getField(), view);
         player.emplace(pl);
-        MovingObject en("enemy", {rooms.second.x + 1, rooms.second.y + 1}, map.getField(), view);
+        Enemy en("enemy", {rooms.second.x + 1, rooms.second.y + 1}, map.getField(), view, &player);
+        //Enemy en("enemy", { pl.getPlace().x + 2, pl.getPlace().y + 2 }, map.getField(), view, &player); //for debug, to place the enemy near the player
         enemy.emplace(en);
         view.setCenteredViewPosition(player->getPlace());
         view.addImage(player->getPlace(), "player");
@@ -125,23 +146,6 @@ public:
             initializeLvl();
         }
     }
-    void processEvents() {
-        const auto onClose = [this](const sf::Event::Closed &) {
-            window.close();
-        };
-        const auto onKeyPressed = [this](const sf::Event::KeyPressed &keyPressed) {
-            if (keyPressed.scancode == sf::Keyboard::Scancode::Escape) {
-                window.close();
-            } else {
-                handlePlayerInput(keyPressed.code);
-            }
-        };
-        const auto onKeyReleased = [this](const sf::Event::KeyReleased &keyReleased) {
-            /*handlePlayerInput(false, keyReleased.code);*/
-        };
-
-        window.handleEvents(onClose, onKeyPressed, onKeyReleased);
-    }
 
     void handlePlayerInput(sf::Keyboard::Key key) {
         if (key == sf::Keyboard::Key::W)
@@ -152,7 +156,15 @@ public:
             player.value().left();
         else if (key == sf::Keyboard::Key::D)
             player.value().right();
+
+		updatePov(player->getPlace());
+
+		enemy->Action(); // можно потом куда-то вынести, но пока так
     }
 
+
+    void updatePov(Coord place) {
+        view.setCenteredViewPosition(place);
+    }
 
 };
